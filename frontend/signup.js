@@ -1,5 +1,5 @@
 const form = document.querySelector("#signup-form");
-const div = document.querySelector("#info");
+// const div = document.querySelector("#info");
 
 const checkPassword = () => {
   const formData = new FormData(form);
@@ -36,7 +36,7 @@ const handleSubmit = async (event) => {
   const sha256Password = sha256(formData.get("password"));
   formData.set("password", sha256Password);
 
-  //const div = document.querySelector("#info");
+  const div = document.querySelector("#info");
 
   if (checkPassword()) {
     const res = await fetch("/signup", {
@@ -46,7 +46,9 @@ const handleSubmit = async (event) => {
     const data = await res.json();
 
     if (data === "200") {
-      alert("회원 가입에 성공했습니다.");
+      // div.innerText = "회원가입에 성공했습니다.";
+      // div.style.color = "blue";
+      alert("회원가입에 성공했습니다.");
       window.location.pathname = "/login.html";
     }
   } else {
